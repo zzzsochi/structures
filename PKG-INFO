@@ -1,0 +1,21 @@
+Metadata-Version: 1.0
+Name: structures
+Version: 0.5
+Summary: User-friendly library for creating data structures.
+Home-page: http://python.org/pypi/structures/
+Author: Zelenyak Aleksandr aka ZZZ
+Author-email: ZZZ.Sochi@GMail.com
+License: GPL
+Description: The structures package is a library for creating data structures
+        with type controling and casting. There is wide enough set of
+        data types and a convenient method of designing of new.
+        
+        The documentation can be found there: http://packages.python.org/structures/0.5/
+        
+Platform: any
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.5
+Classifier: Programming Language :: Python :: 2.6
