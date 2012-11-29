@@ -87,26 +87,6 @@ Structure can contain other structures
     9
 
 
-It's very good tested!
-======================
-
-    $ nosetests --with-doctest --with-coverage --cover-package=structures
-    ..................................
-    Name                        Stmts   Miss  Cover   Missing
-    ---------------------------------------------------------
-    structures                      6      0   100%   
-    structures.dict                44      7    84%   41, 44, 47, 50, 53, 56, 59
-    structures.structure           69      3    96%   38, 56, 107
-    structures.types               59      1    98%   235
-    structures.types_datetime      84      0   100%   
-    ---------------------------------------------------------
-    TOTAL                         262     11    96%   
-    ----------------------------------------------------------------------
-    Ran 34 tests in 0.125s
-
-    OK
-
-
 Contents:
 =========
 
