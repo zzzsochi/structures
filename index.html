@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Structures by zzzsochi</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/zzzsochi/structures">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/zzzsochi/structures/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/zzzsochi/structures/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Structures</h1>
+          <p>User-friendly library for creating data structures.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/zzzsochi">zzzsochi</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1></h1>
+
+<h1>The <strong>structures</strong> package</h1>
+
+<p>The <strong>structures</strong> package is a library for creating data structures with
+type controling and casting. There is wide enough set of data types and
+a convenient method of designing of new.
+The <strong>structures</strong> are similar to the <a href="http://python.org/pypi/basicproperty">basicproperty</a> but more user-friendly
+and readable.</p>
+
+<p>The full documentation can be found there: <a href="http://packages.python.org/structures/0.5">http://packages.python.org/structures/0.5</a></p>
+
+<p>Source code placed on <a href="https://github.com/zzzsochi/structures">github</a></p>
+
+<h1>Concept</h1>
+
+<p>All the structures are created from the class inheritance <strong>Structure</strong>: </p>
+
+<pre><code>&gt;&gt;&gt; from structures import Structure
+&gt;&gt;&gt; class S(Structure):
+...     attr = 10
+... 
+&gt;&gt;&gt; s = S()
+&gt;&gt;&gt; s.attr
+10
+&gt;&gt;&gt; s.attr = 'string'
+&gt;&gt;&gt; s.attr
+'string'
+</code></pre>
+
+<p>Structures can inherit from other structures.</p>
+
+<h3>Types of attributes</h3>
+
+<pre><code>&gt;&gt;&gt; from structures import *
+&gt;&gt;&gt; class S(Structure):
+...     i = Integer
+...     s = String('string')  # setting default value
+...
+&gt;&gt;&gt; s = S()
+&gt;&gt;&gt; s.s
+u'string'
+&gt;&gt;&gt; s.i
+Traceback (most recent call last):
+ ...
+AttributeError: i
+</code></pre>
+
+<p>Now, if you assign a values to attributes <em>s</em> and <em>i</em> it will be
+automatically cast to the appropriate types.</p>
+
+<pre><code>&gt;&gt;&gt; s.i = '13'
+&gt;&gt;&gt; type(s.i), s.i
+(&lt;type 'int'&gt;, 13)
+&gt;&gt;&gt; s.s = 3.14
+&gt;&gt;&gt; type(s.s), s.s
+(&lt;type 'unicode'&gt;, u'3.14')
+&gt;&gt;&gt; s.i = 'not a number'
+Traceback (most recent call last):
+ ...
+ValueError: invalid literal for int() with base 10: 'not a number'
+</code></pre>
+
+<h3>Structure can contain other structures</h3>
+
+<pre><code>&gt;&gt;&gt; from structures import *
+&gt;&gt;&gt; class S(Structure):
+...     class s(Structure):
+...         i = Integer(13)
+...     f = Float(3.14)
+...     d = Decimal('8.62')
+...
+&gt;&gt;&gt; s = S()
+&gt;&gt;&gt; isinstance(s.s, Structure)
+True
+&gt;&gt;&gt; s.s.i
+13
+&gt;&gt;&gt; s.s.i = 9.18
+&gt;&gt;&gt; s.s.i
+9
+</code></pre>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
