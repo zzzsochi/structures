@@ -1,128 +1,233 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Structures by zzzsochi</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>The structures package &mdash; structures 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="structures 1.0 documentation" href="#" />
+    <link rel="next" title="Types of attributes" href="types.html" /> 
   </head>
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/zzzsochi/structures">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/zzzsochi/structures/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/zzzsochi/structures/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="types.html" title="Types of attributes"
+             accesskey="N">next</a> |</li>
+        <li><a href="#">structures 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The <strong>structures</strong> package</a><ul>
+<li><a class="reference internal" href="#concept">Concept</a><ul>
+<li><a class="reference internal" href="#types-of-attributes">Types of attributes</a></li>
+<li><a class="reference internal" href="#structure-can-contain-other-structures">Structure can contain other structures</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#contents">Contents:</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>Structures</h1>
-          <p>User-friendly library for creating data structures.</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/zzzsochi">zzzsochi</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="types.html"
+                        title="next chapter">Types of attributes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
+      </div>
 
-        <h1></h1>
-
-<h1>The <strong>structures</strong> package</h1>
-
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="the-structures-package">
+<h1>The <strong>structures</strong> package<a class="headerlink" href="#the-structures-package" title="Permalink to this headline">¶</a></h1>
 <p>The <strong>structures</strong> package is a library for creating data structures with
 type controling and casting. There is wide enough set of data types and
 a convenient method of designing of new.
-The <strong>structures</strong> are similar to the <a href="http://python.org/pypi/basicproperty">basicproperty</a> but more user-friendly
+The <strong>structures</strong> are similar to the <a class="reference external" href="http://python.org/pypi/basicproperty">basicproperty</a> but more user-friendly
 and readable.</p>
-
-<p>The full documentation can be found there: <a href="http://packages.python.org/structures/0.5">http://packages.python.org/structures/0.5</a></p>
-
-<p>Source code placed on <a href="https://github.com/zzzsochi/structures">github</a></p>
-
-<h1>Concept</h1>
-
-<p>All the structures are created from the class inheritance <strong>Structure</strong>: </p>
-
-<pre><code>&gt;&gt;&gt; from structures import Structure
-&gt;&gt;&gt; class S(Structure):
-...     attr = 10
-... 
-&gt;&gt;&gt; s = S()
-&gt;&gt;&gt; s.attr
-10
-&gt;&gt;&gt; s.attr = 'string'
-&gt;&gt;&gt; s.attr
-'string'
-</code></pre>
-
+<p>The full documentation can be found there: <a class="reference external" href="http://packages.python.org/structures/0.5">http://packages.python.org/structures/0.5</a></p>
+<p>Source code placed on <a class="reference external" href="https://github.com/zzzsochi/structures">github</a>.</p>
+<div class="section" id="concept">
+<h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">¶</a></h2>
+<p>All the structures are created from the class inheritance <strong>Structure</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">structures</span> <span class="kn">import</span> <span class="n">Structure</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">S</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">attr</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">S</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">attr</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">attr</span> <span class="o">=</span> <span class="s">&#39;string&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">attr</span>
+<span class="go">&#39;string&#39;</span>
+</pre></div>
+</div>
 <p>Structures can inherit from other structures.</p>
-
-<h3>Types of attributes</h3>
-
-<pre><code>&gt;&gt;&gt; from structures import *
-&gt;&gt;&gt; class S(Structure):
-...     i = Integer
-...     s = String('string')  # setting default value
-...
-&gt;&gt;&gt; s = S()
-&gt;&gt;&gt; s.s
-u'string'
-&gt;&gt;&gt; s.i
-Traceback (most recent call last):
- ...
-AttributeError: i
-</code></pre>
-
+<div class="section" id="types-of-attributes">
+<h3>Types of attributes<a class="headerlink" href="#types-of-attributes" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">structures</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">S</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">i</span> <span class="o">=</span> <span class="n">Integer</span>
+<span class="gp">... </span>    <span class="n">s</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="s">&#39;string&#39;</span><span class="p">)</span>  <span class="c"># setting default value</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">S</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">s</span>
+<span class="go">u&#39;string&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">i</span>
+<span class="gt">Traceback (most recent call last):</span>
+ <span class="c">...</span>
+<span class="gr">AttributeError</span>: <span class="n">i</span>
+</pre></div>
+</div>
 <p>Now, if you assign a values to attributes <em>s</em> and <em>i</em> it will be
 automatically cast to the appropriate types.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="s">&#39;13&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">i</span><span class="p">),</span> <span class="n">s</span><span class="o">.</span><span class="n">i</span>
+<span class="go">(&lt;type &#39;int&#39;&gt;, 13)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">s</span><span class="p">),</span> <span class="n">s</span><span class="o">.</span><span class="n">s</span>
+<span class="go">(&lt;type &#39;unicode&#39;&gt;, u&#39;3.14&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="s">&#39;not a number&#39;</span>
+<span class="gt">Traceback (most recent call last):</span>
+ <span class="c">...</span>
+<span class="gr">ValueError: invalid literal for int() with base 10</span>: <span class="n">&#39;not a number&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="structure-can-contain-other-structures">
+<h3>Structure can contain other structures<a class="headerlink" href="#structure-can-contain-other-structures" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">structures</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">S</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">class</span> <span class="nc">s</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">i</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">f</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">d</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;8.62&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">S</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">s</span><span class="p">,</span> <span class="n">Structure</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">i</span>
+<span class="go">13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="mf">9.18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">i</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="contents">
+<h2>Contents:<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types of attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="types.html#standart-types">Standart types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="types.html#a-simple-types">A simple types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="types.html#integer-default-nodefault">Integer <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#float-default-nodefault">Float <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#decimal-default-nodefault">Decimal <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#boolean-default-nodefault">Boolean <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#binary-default-nodefault">Binary <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#string-default-nodefault-enc-utf-8">String <em>(default=NoDefault, enc=&#8221;UTF-8&#8221;)</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#containers">Containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="types.html#list-default-nodefault">List <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#tuple-default-nodefault">Tuple <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#set-default-nodefault">Set <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#dict-default-nodefault">Dict <em>(default=NoDefault)</em></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="types.html#date-and-time-types">Date and time types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="types.html#datetime-default-nodefault-format-none">DateTime <em>(default=NoDefault, format=None)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#date-default-nodefault-format-none">Date <em>(default=NoDefault, format=None)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#time-default-nodefault-format-none">Time <em>(default=NoDefault, format=None)</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="types.html#building-custom-types">Building custom types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">Transformation structures into a dict and backwards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#to-dict-structure">to_dict(structure)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform.html#from-dict-structure-class-data">from_dict(structure_class, data)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
 
-<pre><code>&gt;&gt;&gt; s.i = '13'
-&gt;&gt;&gt; type(s.i), s.i
-(&lt;type 'int'&gt;, 13)
-&gt;&gt;&gt; s.s = 3.14
-&gt;&gt;&gt; type(s.s), s.s
-(&lt;type 'unicode'&gt;, u'3.14')
-&gt;&gt;&gt; s.i = 'not a number'
-Traceback (most recent call last):
- ...
-ValueError: invalid literal for int() with base 10: 'not a number'
-</code></pre>
 
-<h3>Structure can contain other structures</h3>
-
-<pre><code>&gt;&gt;&gt; from structures import *
-&gt;&gt;&gt; class S(Structure):
-...     class s(Structure):
-...         i = Integer(13)
-...     f = Float(3.14)
-...     d = Decimal('8.62')
-...
-&gt;&gt;&gt; s = S()
-&gt;&gt;&gt; isinstance(s.s, Structure)
-True
-&gt;&gt;&gt; s.s.i
-13
-&gt;&gt;&gt; s.s.i = 9.18
-&gt;&gt;&gt; s.s.i
-9
-</code></pre>
-      </section>
-
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-    
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="types.html" title="Types of attributes"
+             >next</a> |</li>
+        <li><a href="#">structures 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Alexander Zelenyak.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
   </body>
 </html>

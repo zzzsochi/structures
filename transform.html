@@ -1,0 +1,147 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Transformation structures into a dict and backwards &mdash; structures 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="structures 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Types of attributes" href="types.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="types.html" title="Types of attributes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">structures 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Transformation structures into a dict and backwards</a><ul>
+<li><a class="reference internal" href="#to-dict-structure">to_dict(structure)</a></li>
+<li><a class="reference internal" href="#from-dict-structure-class-data">from_dict(structure_class, data)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="types.html"
+                        title="previous chapter">Types of attributes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/transform.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="transformation-structures-into-a-dict-and-backwards">
+<h1>Transformation structures into a dict and backwards<a class="headerlink" href="#transformation-structures-into-a-dict-and-backwards" title="Permalink to this headline">¶</a></h1>
+<p>E.g. transfirmation structures into a dict is used
+for passing structures to <strong>pickle</strong>...</p>
+<div class="section" id="to-dict-structure">
+<h2>to_dict(structure)<a class="headerlink" href="#to-dict-structure" title="Permalink to this headline">¶</a></h2>
+<p>The function creates a dict with structure&#8217;s contents. It works recursively.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">structures</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">S</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">class</span> <span class="nc">s</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">i</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">f</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">l</span> <span class="o">=</span> <span class="n">List</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">S</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">to_dict</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s">&#39;s&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;i&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">},</span> <span class="s">&#39;f&#39;</span><span class="p">:</span> <span class="mf">3.14</span><span class="p">,</span> <span class="s">&#39;l&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="nb">set</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])]}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="from-dict-structure-class-data">
+<h2>from_dict(structure_class, data)<a class="headerlink" href="#from-dict-structure-class-data" title="Permalink to this headline">¶</a></h2>
+<p>The function creates structure <strong>structure_class</strong> from the dict <strong>data</strong>.
+It creates substructures appropriate types too i.e. it works recursively.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">structures</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">S</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">class</span> <span class="nc">s</span><span class="p">(</span><span class="n">Structure</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">i</span> <span class="o">=</span> <span class="n">Integer</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">f</span> <span class="o">=</span> <span class="n">Float</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">d</span> <span class="o">=</span> <span class="n">Decimal</span><span class="p">(</span><span class="s">&#39;8.62&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">from_dict</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="p">{</span><span class="s">&#39;s&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s">&#39;i&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">},</span> <span class="s">&#39;d&#39;</span><span class="p">:</span> <span class="s">&#39;2.64&#39;</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">:</span> <span class="mf">9.82</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">f</span> <span class="o">==</span> <span class="mf">9.82</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="n">s</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">i</span> <span class="o">==</span> <span class="mi">26</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">d</span>
+<span class="go">Decimal(&#39;2.64&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="types.html" title="Types of attributes"
+             >previous</a> |</li>
+        <li><a href="index.html">structures 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Alexander Zelenyak.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
