@@ -10,17 +10,27 @@ and readable.
 
 .. _basicproperty: http://python.org/pypi/basicproperty
 
-The full documentation can be found there: http://packages.python.org/structures/0.5
+The full documentation can be found there: http://zzzsochi.github.com/structures/
 
 Source code placed on github_.
 
 .. _github: https://github.com/zzzsochi/structures
 
 
+Python 3
+========
+
+Version >= 2.0 only for python 3! It's tested with 3.2.3 and 3.3.0.
+
+For python 2 you must install structures<2.
+
+Documentation writed for python 3.
+
+
 Concept
 =======
 
-All the structures are created from the class inheritance **Structure**: 
+All the structures are created from the class inheritance **Structure**:
 
     >>> from structures import Structure
     >>> class S(Structure):
@@ -46,7 +56,7 @@ Types of attributes
     ...
     >>> s = S()
     >>> s.s
-    u'string'
+    'string'
     >>> s.i
     Traceback (most recent call last):
      ...
@@ -60,7 +70,7 @@ automatically cast to the appropriate types.
     (<type 'int'>, 13)
     >>> s.s = 3.14
     >>> type(s.s), s.s
-    (<type 'unicode'>, u'3.14')
+    (<type 'str'>, u'3.14')
     >>> s.i = 'not a number'
     Traceback (most recent call last):
      ...

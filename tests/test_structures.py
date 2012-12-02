@@ -1,6 +1,7 @@
 # coding: utf8
 
 from nose.tools import *
+
 from structures import *
 
 

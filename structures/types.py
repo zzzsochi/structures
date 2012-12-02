@@ -165,8 +165,26 @@ class Boolean(_SimpleType):
     func = bool
 
 
+class Bytes(_SimpleType):
+    '''Bytes type, this is a type introducing the sequence of bytes: str
+
+          >>> from structures import *
+          >>> class S(Structure):
+          ...     b = Bytes('binary string')
+          ...
+          >>> s = S()
+          >>> s.b
+          'binary string'
+          >>> s.b = 'other_binary_string'
+          >>> s.b
+          'other_binary_string'
+          >>> assert type(s.b) is str
+    '''
+    func = str
+
+
 class Binary(_SimpleType):
-    '''Binary type, this is a type introducing the sequence of bytes: str
+    '''Binary type is deprecated! Use Bytes!
 
           >>> from structures import *
           >>> class S(Structure):
@@ -175,12 +193,13 @@ class Binary(_SimpleType):
           >>> s = S()
           >>> s.b
           'binary string'
-          >>> s.b = u'unicode string'
-          >>> s.b
-          'unicode string'
           >>> assert type(s.b) is str
     '''
-    func = str
+    @staticmethod
+    def func(*args, **kwargs):
+        import warnings
+        warnings.warn('Binary type is deprecated! Use Bytes!', DeprecationWarning)
+        return str(*args, **kwargs)
 
 
 class String(Type):
