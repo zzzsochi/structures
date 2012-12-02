@@ -46,6 +46,7 @@
   <h3><a href="#">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">The <strong>structures</strong> package</a><ul>
+<li><a class="reference internal" href="#python-3">Python 3</a></li>
 <li><a class="reference internal" href="#concept">Concept</a><ul>
 <li><a class="reference internal" href="#types-of-attributes">Types of attributes</a></li>
 <li><a class="reference internal" href="#structure-can-contain-other-structures">Structure can contain other structures</a></li>
@@ -94,8 +95,14 @@ type controling and casting. There is wide enough set of data types and
 a convenient method of designing of new.
 The <strong>structures</strong> are similar to the <a class="reference external" href="http://python.org/pypi/basicproperty">basicproperty</a> but more user-friendly
 and readable.</p>
-<p>The full documentation can be found there: <a class="reference external" href="http://packages.python.org/structures/0.5">http://packages.python.org/structures/0.5</a></p>
+<p>The full documentation can be found there: <a class="reference external" href="http://zzzsochi.github.com/structures/">http://zzzsochi.github.com/structures/</a></p>
 <p>Source code placed on <a class="reference external" href="https://github.com/zzzsochi/structures">github</a>.</p>
+<div class="section" id="python-3">
+<h2>Python 3<a class="headerlink" href="#python-3" title="Permalink to this headline">¶</a></h2>
+<p>Version &gt;= 2.0 only for python 3! It&#8217;s tested with 3.2.3 and 3.3.0.</p>
+<p>For python 2 you must install structures&lt;2.</p>
+<p>Documentation writed for python 3.</p>
+</div>
 <div class="section" id="concept">
 <h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">¶</a></h2>
 <p>All the structures are created from the class inheritance <strong>Structure</strong>:</p>
@@ -121,7 +128,7 @@ and readable.</p>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">S</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">s</span>
-<span class="go">u&#39;string&#39;</span>
+<span class="go">&#39;string&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">i</span>
 <span class="gt">Traceback (most recent call last):</span>
  <span class="c">...</span>
@@ -135,7 +142,7 @@ automatically cast to the appropriate types.</p>
 <span class="go">(&lt;type &#39;int&#39;&gt;, 13)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="mf">3.14</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">s</span><span class="p">),</span> <span class="n">s</span><span class="o">.</span><span class="n">s</span>
-<span class="go">(&lt;type &#39;unicode&#39;&gt;, u&#39;3.14&#39;)</span>
+<span class="go">(&lt;type &#39;str&#39;&gt;, u&#39;3.14&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="s">&#39;not a number&#39;</span>
 <span class="gt">Traceback (most recent call last):</span>
  <span class="c">...</span>
@@ -175,6 +182,7 @@ automatically cast to the appropriate types.</p>
 <li class="toctree-l4"><a class="reference internal" href="types.html#float-default-nodefault">Float <em>(default=NoDefault)</em></a></li>
 <li class="toctree-l4"><a class="reference internal" href="types.html#decimal-default-nodefault">Decimal <em>(default=NoDefault)</em></a></li>
 <li class="toctree-l4"><a class="reference internal" href="types.html#boolean-default-nodefault">Boolean <em>(default=NoDefault)</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="types.html#bytes-default-nodefault">Bytes <em>(default=NoDefault)</em></a></li>
 <li class="toctree-l4"><a class="reference internal" href="types.html#binary-default-nodefault">Binary <em>(default=NoDefault)</em></a></li>
 <li class="toctree-l4"><a class="reference internal" href="types.html#string-default-nodefault-enc-utf-8">String <em>(default=NoDefault, enc=&#8221;UTF-8&#8221;)</em></a></li>
 </ul>

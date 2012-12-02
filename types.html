@@ -56,6 +56,7 @@
 <li><a class="reference internal" href="#float-default-nodefault">Float <em>(default=NoDefault)</em></a></li>
 <li><a class="reference internal" href="#decimal-default-nodefault">Decimal <em>(default=NoDefault)</em></a></li>
 <li><a class="reference internal" href="#boolean-default-nodefault">Boolean <em>(default=NoDefault)</em></a></li>
+<li><a class="reference internal" href="#bytes-default-nodefault">Bytes <em>(default=NoDefault)</em></a></li>
 <li><a class="reference internal" href="#binary-default-nodefault">Binary <em>(default=NoDefault)</em></a></li>
 <li><a class="reference internal" href="#string-default-nodefault-enc-utf-8">String <em>(default=NoDefault, enc=&#8221;UTF-8&#8221;)</em></a></li>
 </ul>
@@ -124,26 +125,27 @@
 <li><a class="reference internal" href="#float-default-nodefault" id="id5">Float <em>(default=NoDefault)</em></a></li>
 <li><a class="reference internal" href="#decimal-default-nodefault" id="id6">Decimal <em>(default=NoDefault)</em></a></li>
 <li><a class="reference internal" href="#boolean-default-nodefault" id="id7">Boolean <em>(default=NoDefault)</em></a></li>
-<li><a class="reference internal" href="#binary-default-nodefault" id="id8">Binary <em>(default=NoDefault)</em></a></li>
-<li><a class="reference internal" href="#string-default-nodefault-enc-utf-8" id="id9">String <em>(default=NoDefault, enc=&#8221;UTF-8&#8221;)</em></a></li>
+<li><a class="reference internal" href="#bytes-default-nodefault" id="id8">Bytes <em>(default=NoDefault)</em></a></li>
+<li><a class="reference internal" href="#binary-default-nodefault" id="id9">Binary <em>(default=NoDefault)</em></a></li>
+<li><a class="reference internal" href="#string-default-nodefault-enc-utf-8" id="id10">String <em>(default=NoDefault, enc=&#8221;UTF-8&#8221;)</em></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#containers" id="id10">Containers</a><ul>
-<li><a class="reference internal" href="#list-default-nodefault" id="id11">List <em>(default=NoDefault)</em></a></li>
-<li><a class="reference internal" href="#tuple-default-nodefault" id="id12">Tuple <em>(default=NoDefault)</em></a></li>
-<li><a class="reference internal" href="#set-default-nodefault" id="id13">Set <em>(default=NoDefault)</em></a></li>
-<li><a class="reference internal" href="#dict-default-nodefault" id="id14">Dict <em>(default=NoDefault)</em></a></li>
+<li><a class="reference internal" href="#containers" id="id11">Containers</a><ul>
+<li><a class="reference internal" href="#list-default-nodefault" id="id12">List <em>(default=NoDefault)</em></a></li>
+<li><a class="reference internal" href="#tuple-default-nodefault" id="id13">Tuple <em>(default=NoDefault)</em></a></li>
+<li><a class="reference internal" href="#set-default-nodefault" id="id14">Set <em>(default=NoDefault)</em></a></li>
+<li><a class="reference internal" href="#dict-default-nodefault" id="id15">Dict <em>(default=NoDefault)</em></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#date-and-time-types" id="id15">Date and time types</a><ul>
-<li><a class="reference internal" href="#datetime-default-nodefault-format-none" id="id16">DateTime <em>(default=NoDefault, format=None)</em></a></li>
-<li><a class="reference internal" href="#date-default-nodefault-format-none" id="id17">Date <em>(default=NoDefault, format=None)</em></a></li>
-<li><a class="reference internal" href="#time-default-nodefault-format-none" id="id18">Time <em>(default=NoDefault, format=None)</em></a></li>
+<li><a class="reference internal" href="#date-and-time-types" id="id16">Date and time types</a><ul>
+<li><a class="reference internal" href="#datetime-default-nodefault-format-none" id="id17">DateTime <em>(default=NoDefault, format=None)</em></a></li>
+<li><a class="reference internal" href="#date-default-nodefault-format-none" id="id18">Date <em>(default=NoDefault, format=None)</em></a></li>
+<li><a class="reference internal" href="#time-default-nodefault-format-none" id="id19">Time <em>(default=NoDefault, format=None)</em></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#building-custom-types" id="id19">Building custom types</a></li>
+<li><a class="reference internal" href="#building-custom-types" id="id20">Building custom types</a></li>
 </ul>
 </li>
 </ul>
@@ -195,11 +197,14 @@ the absent this attribute.</p>
 <tr class="row-odd"><td>Boolean</td>
 <td>bool</td>
 </tr>
-<tr class="row-even"><td>Binary</td>
-<td>str</td>
+<tr class="row-even"><td>Bytes</td>
+<td>bytes</td>
 </tr>
-<tr class="row-odd"><td>String</td>
-<td>unicode</td>
+<tr class="row-odd"><td>Binary</td>
+<td>deprecated</td>
+</tr>
+<tr class="row-even"><td>String</td>
+<td>str</td>
 </tr>
 </tbody>
 </table>
@@ -219,18 +224,22 @@ the absent this attribute.</p>
 <h4><a class="toc-backref" href="#id7">Boolean <em>(default=NoDefault)</em></a><a class="headerlink" href="#boolean-default-nodefault" title="Permalink to this headline">¶</a></h4>
 <p><strong>bool</strong> is used for casting.</p>
 </div>
+<div class="section" id="bytes-default-nodefault">
+<h4><a class="toc-backref" href="#id8">Bytes <em>(default=NoDefault)</em></a><a class="headerlink" href="#bytes-default-nodefault" title="Permalink to this headline">¶</a></h4>
+<p><strong>bytes</strong> is used for casting.</p>
+</div>
 <div class="section" id="binary-default-nodefault">
-<h4><a class="toc-backref" href="#id8">Binary <em>(default=NoDefault)</em></a><a class="headerlink" href="#binary-default-nodefault" title="Permalink to this headline">¶</a></h4>
-<p><strong>str</strong> is used for casting.</p>
+<h4><a class="toc-backref" href="#id9">Binary <em>(default=NoDefault)</em></a><a class="headerlink" href="#binary-default-nodefault" title="Permalink to this headline">¶</a></h4>
+<p><strong>Deprecated</strong>. Use <cite>Bytes</cite>.</p>
 </div>
 <div class="section" id="string-default-nodefault-enc-utf-8">
-<h4><a class="toc-backref" href="#id9">String <em>(default=NoDefault, enc=&#8221;UTF-8&#8221;)</em></a><a class="headerlink" href="#string-default-nodefault-enc-utf-8" title="Permalink to this headline">¶</a></h4>
-<p><strong>unicode</strong> is used for casting.
-Value <strong>enc</strong> is the encoding for casting from <strong>str</strong>.</p>
+<h4><a class="toc-backref" href="#id10">String <em>(default=NoDefault, enc=&#8221;UTF-8&#8221;)</em></a><a class="headerlink" href="#string-default-nodefault-enc-utf-8" title="Permalink to this headline">¶</a></h4>
+<p><strong>str</strong> is used for casting.
+Value <strong>enc</strong> is the encoding for casting from <strong>bytes</strong>.</p>
 </div>
 </div>
 <div class="section" id="containers">
-<h3><a class="toc-backref" href="#id10">Containers</a><a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id11">Containers</a><a class="headerlink" href="#containers" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <colgroup>
 <col width="50%" />
@@ -277,28 +286,28 @@ during creating the instance of structure.</p>
 </pre></div>
 </div>
 <div class="section" id="list-default-nodefault">
-<h4><a class="toc-backref" href="#id11">List <em>(default=NoDefault)</em></a><a class="headerlink" href="#list-default-nodefault" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id12">List <em>(default=NoDefault)</em></a><a class="headerlink" href="#list-default-nodefault" title="Permalink to this headline">¶</a></h4>
 <p><strong>list</strong> is used for casting.</p>
 </div>
 <div class="section" id="tuple-default-nodefault">
-<h4><a class="toc-backref" href="#id12">Tuple <em>(default=NoDefault)</em></a><a class="headerlink" href="#tuple-default-nodefault" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id13">Tuple <em>(default=NoDefault)</em></a><a class="headerlink" href="#tuple-default-nodefault" title="Permalink to this headline">¶</a></h4>
 <p><strong>tuple</strong> is used for casting.</p>
 </div>
 <div class="section" id="set-default-nodefault">
-<h4><a class="toc-backref" href="#id13">Set <em>(default=NoDefault)</em></a><a class="headerlink" href="#set-default-nodefault" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id14">Set <em>(default=NoDefault)</em></a><a class="headerlink" href="#set-default-nodefault" title="Permalink to this headline">¶</a></h4>
 <p><strong>set</strong> is used for casting.</p>
 </div>
 <div class="section" id="dict-default-nodefault">
-<h4><a class="toc-backref" href="#id14">Dict <em>(default=NoDefault)</em></a><a class="headerlink" href="#dict-default-nodefault" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id15">Dict <em>(default=NoDefault)</em></a><a class="headerlink" href="#dict-default-nodefault" title="Permalink to this headline">¶</a></h4>
 <p><strong>dict</strong> is used for casting.</p>
 </div>
 </div>
 <div class="section" id="date-and-time-types">
-<h3><a class="toc-backref" href="#id15">Date and time types</a><a class="headerlink" href="#date-and-time-types" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Date and time types</a><a class="headerlink" href="#date-and-time-types" title="Permalink to this headline">¶</a></h3>
 <p>Value <strong>format</strong> is <strong>time.strftime</strong> formating string.
 If it&#8217;s <strong>None</strong> (default), ISO-like format is used.</p>
 <div class="section" id="datetime-default-nodefault-format-none">
-<h4><a class="toc-backref" href="#id16">DateTime <em>(default=NoDefault, format=None)</em></a><a class="headerlink" href="#datetime-default-nodefault-format-none" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id17">DateTime <em>(default=NoDefault, format=None)</em></a><a class="headerlink" href="#datetime-default-nodefault-format-none" title="Permalink to this headline">¶</a></h4>
 <p>It accepts <strong>datetime.datetime</strong>, <strong>datetime.date</strong> (setting time as <em>00:00:00</em>)
 and strings.</p>
 <p>One of next formats is used for parsing strings if <strong>format</strong> is <strong>None</strong>:</p>
@@ -315,7 +324,7 @@ and strings.</p>
 </div></blockquote>
 </div>
 <div class="section" id="date-default-nodefault-format-none">
-<h4><a class="toc-backref" href="#id17">Date <em>(default=NoDefault, format=None)</em></a><a class="headerlink" href="#date-default-nodefault-format-none" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id18">Date <em>(default=NoDefault, format=None)</em></a><a class="headerlink" href="#date-default-nodefault-format-none" title="Permalink to this headline">¶</a></h4>
 <p>It accepts <strong>datetime.date</strong>, <strong>datetime.datetime</strong> (date is took only)
 and strings.</p>
 <p>One of next formats is used for parsing strings if <strong>format</strong> is <strong>None</strong>
@@ -333,7 +342,7 @@ and date is took only:</p>
 </div></blockquote>
 </div>
 <div class="section" id="time-default-nodefault-format-none">
-<h4><a class="toc-backref" href="#id18">Time <em>(default=NoDefault, format=None)</em></a><a class="headerlink" href="#time-default-nodefault-format-none" title="Permalink to this headline">¶</a></h4>
+<h4><a class="toc-backref" href="#id19">Time <em>(default=NoDefault, format=None)</em></a><a class="headerlink" href="#time-default-nodefault-format-none" title="Permalink to this headline">¶</a></h4>
 <p>It accepts <strong>datetime.time</strong>, <strong>datetime.datetime</strong> (time is took only)
 and strings.</p>
 <p>One of next formats is used for parsing strings if <strong>format</strong> is <strong>None</strong>
@@ -354,7 +363,7 @@ and time is took only:</p>
 </div>
 </div>
 <div class="section" id="building-custom-types">
-<h2><a class="toc-backref" href="#id19">Building custom types</a><a class="headerlink" href="#building-custom-types" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Building custom types</a><a class="headerlink" href="#building-custom-types" title="Permalink to this headline">¶</a></h2>
 <p>Pleace read the <strong>structures.types</strong> module for detals... It&#8217;s realy simple!</p>
 </div>
 </div>

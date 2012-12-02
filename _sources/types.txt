@@ -41,9 +41,11 @@ A simple types
 +---------+-----------------+
 | Boolean |       bool      |
 +---------+-----------------+
-| Binary  |       str       |
+| Bytes   |       bytes     |
 +---------+-----------------+
-| String  |     unicode     |
+| Binary  |    deprecated   |
++---------+-----------------+
+| String  |       str       |
 +---------+-----------------+
 
 Integer *(default=NoDefault)*
@@ -62,14 +64,18 @@ Boolean *(default=NoDefault)*
 +++++++++++++++++++++++++++++
 **bool** is used for casting.
 
+Bytes *(default=NoDefault)*
+++++++++++++++++++++++++++++
+**bytes** is used for casting.
+
 Binary *(default=NoDefault)*
 ++++++++++++++++++++++++++++
-**str** is used for casting.
+**Deprecated**. Use `Bytes`.
 
 String *(default=NoDefault, enc="UTF-8")*
 +++++++++++++++++++++++++++++++++++++++++
-**unicode** is used for casting.
-Value **enc** is the encoding for casting from **str**.
+**str** is used for casting.
+Value **enc** is the encoding for casting from **bytes**.
 
 
 Containers
