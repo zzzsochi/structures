@@ -24,13 +24,13 @@ Version >= 2.0 only for python 3! It's tested with 3.2.3 and 3.3.0.
 
 For python 2 you must install structures<2.
 
-Documentstion writed for python 3.
+Documentation writed for python 3.
 
 
 Concept
 =======
 
-All the structures are created from the class inheritance **Structure**: 
+All the structures are created from the class inheritance **Structure**:
 
     >>> from structures import Structure
     >>> class S(Structure):

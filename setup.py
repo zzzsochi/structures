@@ -5,8 +5,8 @@ from distutils.core import setup
 
 from structures import __version__
 
-description = u'User-friendly library for creating data structures.'
-long_description = open('README.rst', 'rb').read()
+description = 'User-friendly library for creating data structures.'
+long_description = open('README.rst', 'rb').read().decode('utf8')
 
 
 setup(
