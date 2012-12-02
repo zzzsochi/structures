@@ -1,6 +1,5 @@
-# coding: utf8
-
 from nose.tools import *
+
 from structures import *
 
 
@@ -218,16 +217,50 @@ def test_Decimal():
     assert not hasattr(test, 'a3')
 
 
+def test_Bytes():
+    class TestClass(Structure):
+        a1 = Bytes
+        a2 = Bytes(b'default_bytes')
+
+    test = TestClass()
+
+    assert not hasattr(test, 'a1')
+    assert hasattr(test, 'a2')
+
+    eq_(type(test.a2), bytes)
+    eq_(test.a2, b'default_bytes')
+
+    test.a1 = b'test_data_a1'
+    eq_(type(test.a1), bytes)
+    eq_(test.a1, b'test_data_a1')
+
+    test.a2 = b'test_data_a2'
+    eq_(type(test.a2), bytes)
+    eq_(test.a2, b'test_data_a2')
+
+    try:
+        test.a1 = 'test_unicode_data_a1'
+        raise AssertionError('Must raise TypeError exception.')
+    except TypeError:
+        pass
+
+    try:
+        test.a2 = 'test_unicode_data_a2'
+        raise AssertionError('Must raise TypeError exception.')
+    except TypeError:
+        pass
+
+
 def test_String():
     class TestClass(Structure):
         a1 = String
-        a2 = String('ascii_str')
-        a3 = String(u'ascii_unicode')
+        a2 = String(b'ascii_str')
+        a3 = String('ascii_unicode')
         a4 = String(13)
         a5 = String(3.14)
         a6 = String(enc='UTF-8')
-        a7 = String(u'\u041f\u0440\u0438\u0432\u0435\u0442')    # u'Привет'
-        a8 = String(u'\u041f\u0440\u0438\u0432\u0435\u0442'.encode('UTF-8'),
+        a7 = String('\u041f\u0440\u0438\u0432\u0435\u0442')    # 'Привет'
+        a8 = String('\u041f\u0440\u0438\u0432\u0435\u0442'.encode('UTF-8'),
                     enc='UTF-8')
         a9 = String(enc='ASCII')
 
@@ -243,39 +276,39 @@ def test_String():
     assert hasattr(test, 'a8')
     assert not hasattr(test, 'a9')
 
-    eq_(type(test.a2), unicode)
-    eq_(type(test.a3), unicode)
-    eq_(type(test.a4), unicode)
-    eq_(type(test.a5), unicode)
-    eq_(type(test.a7), unicode)
-    eq_(type(test.a8), unicode)
+    eq_(type(test.a2), str)
+    eq_(type(test.a3), str)
+    eq_(type(test.a4), str)
+    eq_(type(test.a5), str)
+    eq_(type(test.a7), str)
+    eq_(type(test.a8), str)
 
-    eq_(test.a2, u'ascii_str')
-    eq_(test.a3, u'ascii_unicode')
-    eq_(test.a4, u'13')
-    eq_(test.a5, unicode(3.14))
-    eq_(test.a7, u'\u041f\u0440\u0438\u0432\u0435\u0442')
-    eq_(test.a8, u'\u041f\u0440\u0438\u0432\u0435\u0442')
+    eq_(test.a2, 'ascii_str')
+    eq_(test.a3, 'ascii_unicode')
+    eq_(test.a4, '13')
+    eq_(test.a5, str(3.14))
+    eq_(test.a7, '\u041f\u0440\u0438\u0432\u0435\u0442')
+    eq_(test.a8, '\u041f\u0440\u0438\u0432\u0435\u0442')
 
-    test.a4 = u'\u041f\u0440\u0438\u0432\u0435\u0442'
-    eq_(type(test.a4), unicode)
-    eq_(test.a4, u'\u041f\u0440\u0438\u0432\u0435\u0442')
+    test.a4 = '\u041f\u0440\u0438\u0432\u0435\u0442'
+    eq_(type(test.a4), str)
+    eq_(test.a4, '\u041f\u0440\u0438\u0432\u0435\u0442')
 
-    test.a5 = u'\u041f\u0440\u0438\u0432\u0435\u0442'.encode('UTF-8')
-    eq_(type(test.a5), unicode)
-    eq_(test.a5, u'\u041f\u0440\u0438\u0432\u0435\u0442')
+    test.a5 = '\u041f\u0440\u0438\u0432\u0435\u0442'.encode('UTF-8')
+    eq_(type(test.a5), str)
+    eq_(test.a5, '\u041f\u0440\u0438\u0432\u0435\u0442')
 
     try:
-        test.a9 = u'\u041f\u0440\u0438\u0432\u0435\u0442'.encode('UTF-8')
+        test.a9 = '\u041f\u0440\u0438\u0432\u0435\u0442'.encode('UTF-8')
     except UnicodeDecodeError:
         pass
     else:
         raise AssertionError(repr(test.a9))
 
-    test.a1 = 'qwerty'
+    test.a1 = b'qwerty'
     assert hasattr(test, 'a1')
-    eq_(type(test.a1), unicode)
-    eq_(test.a1, u'qwerty')
+    eq_(type(test.a1), str)
+    eq_(test.a1, 'qwerty')
 
     assert hasattr(test, 'a1')
     assert hasattr(test, 'a2')
@@ -327,7 +360,7 @@ def test_List():
     assert test1.a3 is not test2.a3
 
     eq_(test1.a2, [])
-    eq_(test1.a3, range(10))
+    eq_(test1.a3, list(range(10)))
 
     eq_(type(test1.a2), list)
     eq_(type(test1.a3), list)
@@ -501,12 +534,12 @@ def test_recurcive():
 
     eq_(type(test.integer), int)
     eq_(test.integer, 13)
-    eq_(test.sub.string, u'qwerty')
-    eq_(type(test.sub.string), unicode)
+    eq_(test.sub.string, 'qwerty')
+    eq_(type(test.sub.string), str)
 
     test.sub.string = 127
-    eq_(test.sub.string, u'127')
-    eq_(type(test.sub.string), unicode)
+    eq_(test.sub.string, '127')
+    eq_(type(test.sub.string), str)
 
     sub = TestClass.sub()
     sub.integer = 3.14
@@ -515,8 +548,8 @@ def test_recurcive():
     test.sub = sub
     eq_(test.sub.integer, 3)
     eq_(type(test.sub.integer), int)
-    eq_(test.sub.string, u'987')
-    eq_(type(test.sub.string), unicode)
+    eq_(test.sub.string, '987')
+    eq_(type(test.sub.string), str)
     eq_(test.sub.attr, 'qwerty')
     eq_(type(test.sub.attr), str)
 

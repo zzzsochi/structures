@@ -1,8 +1,6 @@
-# coding: utf8
-
 __all__ = ['Descriptor', 'AttributeNotSet', 'Structure']
 
-from types import Type, NoDefault, NoInitFunc
+from .types import Type, NoDefault, NoInitFunc
 
 AttributeNotSet = type('AttributeNotSet', (), {})
 
@@ -81,11 +79,8 @@ class StructureMetaClass(type):
                 setattr(cls, attr, value)
 
 
-class Structure(object):
+class Structure(object, metaclass=StructureMetaClass):
     '''Basic class for building structures of data.'''
-
-    __metaclass__ = StructureMetaClass
-
     def __init__(self):
         self.__data__ = {}
         for attr in dir(self):

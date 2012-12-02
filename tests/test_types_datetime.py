@@ -1,7 +1,7 @@
-# coding: utf8
-
 import datetime
+
 from nose.tools import *
+
 from structures import *
 
 

@@ -1,12 +1,13 @@
-# coding: utf8
-
 '''
 In this module defined two function for creating
 structures from dict and dict from structures.
 It's need for serialize structures.
 '''
 
-from structures.structure import StructureDescriptor
+import decimal
+
+from .structure import Structure
+from .structure import StructureDescriptor
 
 
 __all__ = ['from_dict', 'to_dict']
@@ -34,9 +35,6 @@ def from_dict(structure_class, data):
 
 def _prepare_to_dict(obj):
     '''Prepare object to build dict from structure.'''
-    import decimal
-    from structure import Structure
-
     if isinstance(obj, Structure):
         return to_dict(obj)
 

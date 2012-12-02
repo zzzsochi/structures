@@ -1,5 +1,3 @@
-# coding: utf8
-
 from nose.tools import *
 
 from structures import *
@@ -15,12 +13,12 @@ def test_from_dict():
 
     test = from_dict(TestClass, {'i': '26', 's': 'ytrewq', 'd': '98.2'})
     eq_(test.i, 26)
-    eq_(test.s, u'ytrewq')
+    eq_(test.s, 'ytrewq')
     eq_(test.d, decimal.Decimal('98.2'))
 
     test = from_dict(TestClass, {'i': 36.6, 'attr': '345'})
     eq_(test.i, 36)
-    eq_(test.s, u'qwerty')
+    eq_(test.s, 'qwerty')
     eq_(test.d, decimal.Decimal('5.36'))
     eq_(test.attr, '345')
 
@@ -36,7 +34,7 @@ def test_from_dict_recurcive():
     test = from_dict(TestClass, {'i': '26', 's': 'ytrewq',
                                  'sub': {'i': '100'}})
     eq_(test.i, 26)
-    eq_(test.s, u'ytrewq')
+    eq_(test.s, 'ytrewq')
     eq_(test.sub.i, 100)
 
 
@@ -46,7 +44,7 @@ def test_to_dict():
         s = String('qwerty')
 
     test = TestClass()
-    eq_(to_dict(test), {'i': 13, 's': u'qwerty'})
+    eq_(to_dict(test), {'i': 13, 's': 'qwerty'})
 
 
 def test_to_dict_recurcive():
@@ -58,4 +56,4 @@ def test_to_dict_recurcive():
             i = Integer(26)
 
     test = TestClass()
-    eq_(to_dict(test), {'i': 13, 's': u'qwerty', 'sub': {'i': 26}})
+    eq_(to_dict(test), {'i': 13, 's': 'qwerty', 'sub': {'i': 26}})

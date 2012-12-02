@@ -1,5 +1,3 @@
-# coding: utf8
-
 NoDefault = type('NoDefault', (), {})
 NoInitFunc = type('NoInitFunc', (), {})
 
@@ -165,22 +163,58 @@ class Boolean(_SimpleType):
     func = bool
 
 
-class Binary(_SimpleType):
-    '''Binary type, this is a type introducing the sequence of bytes: str
+class Bytes(_SimpleType):
+    '''Bytes type, this is a type introducing the sequence of bytes: str
 
           >>> from structures import *
           >>> class S(Structure):
-          ...     b = Binary('binary string')
+          ...     b = Bytes(b'binary string')
           ...
           >>> s = S()
           >>> s.b
-          'binary string'
-          >>> s.b = u'unicode string'
+          b'binary string'
+          >>>
+          >>> try:
+          ...     s.b = 'unicode string'
+          ...     raise AssertionError('Must raise TypeError exception.')
+          ...
+          ... except TypeError:
+          ...     pass
+          ...
+          >>> assert type(s.b) is bytes
           >>> s.b
-          'unicode string'
-          >>> assert type(s.b) is str
+          b'binary string'
     '''
-    func = str
+    func = bytes
+
+
+class Binary(_SimpleType):
+    '''Binary type is deprecated! Use Bytes!
+
+          >>> from structures import *
+          >>> class S(Structure):
+          ...     b = Binary(b'binary string')
+          ...
+          >>> s = S()
+          >>> s.b
+          b'binary string'
+          >>>
+          >>> try:
+          ...     s.b = 'unicode string'
+          ...     raise AssertionError('Must raise TypeError exception.')
+          ...
+          ... except TypeError:
+          ...     pass
+          ...
+          >>> assert type(s.b) is bytes
+          >>> s.b
+          b'binary string'
+    '''
+    @staticmethod
+    def func(*args, **kwargs):
+        import warnings
+        warnings.warn('Binary type is deprecated! Use Bytes!', DeprecationWarning)
+        return bytes(*args, **kwargs)
 
 
 class String(Type):
@@ -196,16 +230,15 @@ class String(Type):
           ...
           >>> s = S()
           >>> s.s
-          u'test'
+          'test'
           >>> s.s = 777
           >>> s.s
-          u'777'
+          '777'
     '''
 
     def __init__(self, default=NoDefault, enc='UTF-8'):
         self.enc = enc
-        super(String, self).__init__(lambda o, e=enc: self.__class__.func(o, e),
-                                     default)
+        super(String, self).__init__(lambda o, e=enc: self.__class__.func(o, e), default)
 
     @staticmethod
     def func(obj, enc='UTF-8'):
@@ -213,13 +246,13 @@ class String(Type):
 
            Codepage ``enc`` is used for decoding str.'''
 
-        if isinstance(obj, unicode):
+        if isinstance(obj, str):
             return obj
         else:
             try:
-                return unicode(obj, enc)
-            except (UnicodeDecodeError, TypeError):
-                return str(obj).decode(enc)
+                return str(obj, enc)
+            except TypeError:
+                return str(obj)
 
 
 class _StandartContainer(Type):
@@ -246,7 +279,7 @@ class List(_StandartContainer):
           >>> s.l
           [665, 666, 667]
           >>> assert type(s.l) is list
-          >>> s.l = xrange(667, 664, -1)
+          >>> s.l = range(667, 664, -1)
           >>> s.l
           [667, 666, 665]
           >>> assert type(s.l) is list

@@ -1,5 +1,3 @@
-# coding: utf8
-
 from distutils.core import setup
 
 # python setup.py bdist_egg
@@ -26,10 +24,9 @@ setup(
                 'Development Status :: 5 - Production/Stable',
                 'Intended Audience :: Developers',
                 'Operating System :: OS Independent',
-                'Programming Language :: Python',
-                'Programming Language :: Python :: 2.5',
-                'Programming Language :: Python :: 2.6',
-                'Programming Language :: Python :: 2.7',
+                'Programming Language :: Python :: 3',
+                'Programming Language :: Python :: 3.2',
+                'Programming Language :: Python :: 3.3',
               ],
 
         packages=['structures'],

@@ -1,5 +1,3 @@
-# coding: utf8
-
 '''In this is module defined types for working with **datetime**.'''
 
 __all__ = ['DateTime', 'Date', 'Time']
@@ -7,7 +5,7 @@ __all__ = ['DateTime', 'Date', 'Time']
 import re
 import datetime
 
-from types import Type, NoDefault
+from .types import Type, NoDefault
 
 RE_datetime_ISO = re.compile(
     r'^(\d\d\d\d)-(\d\d)-(\d\d)[\sTt](\d\d):(\d\d)(?::(\d\d))?(?:\.(\d+))?$')
@@ -58,7 +56,7 @@ class DateTime(_DateTimeType):
             return dt
         elif type(dt) is datetime.date:
             return datetime.datetime(*dt.timetuple()[:3])
-        elif isinstance(dt, basestring):
+        elif isinstance(dt, str):
             if format is None:
                 dt = parse_ISO(dt)
                 if type(dt) is datetime.datetime:
@@ -81,7 +79,7 @@ class Date(_DateTimeType):
             return date
         elif type(date) is datetime.datetime:
             return date.date()
-        elif isinstance(date, basestring):
+        elif isinstance(date, str):
             if format is None:
                 dt = parse_ISO(date)
                 if type(dt) is datetime.datetime:
@@ -104,7 +102,7 @@ class Time(_DateTimeType):
             return time
         elif type(time) is datetime.datetime:
             return time.time()
-        elif isinstance(time, basestring):
+        elif isinstance(time, str):
             if format is None:
                 dt = parse_ISO(time)
                 if type(dt) is datetime.datetime:
