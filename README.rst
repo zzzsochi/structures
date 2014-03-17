@@ -20,7 +20,7 @@ Source code placed on github_.
 Python 3
 ========
 
-Version >= 2.0 only for python 3! It's tested with 3.2.3 and 3.3.0.
+Version >= 2.0 only for python 3!
 
 For python 2 you must install structures<2.
 
