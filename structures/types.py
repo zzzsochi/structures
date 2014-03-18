@@ -1,5 +1,21 @@
-NoDefault = type('NoDefault', (), {})
-NoInitFunc = type('NoInitFunc', (), {})
+from .descriptors import FieldDescriptor
+from .markers import NoDefault, NoInitFunc
+
+__all__ = [
+    'Type',
+    'Integer',
+    'Float',
+    'Decimal',
+    'Boolean',
+    'Bytes',
+    'Binary',
+    'String',
+    'List',
+    'Tuple',
+    'Set',
+    'FrozenSet',
+    'Dict',
+]
 
 
 class Type(object):
@@ -50,23 +66,18 @@ class Type(object):
     # Also it is called for the default value in the creating (not instance!)
     # structure.
 
-    init_func = NoInitFunc
-    # Called for setting the default value in the creating instance of
-    # structure. It must accept one argument -- default value -- and return
-    # a new defaul value.
-
     default = NoDefault
     # Default value. It is processed by ``func`` in the creating structure
     # and by ``init_func`` in creating structure's instance.
 
-    def __init__(self, func, default=NoDefault, init_func=NoInitFunc):
+    def __init__(self, func, default=NoDefault):
         self.func = func
-        self.init_func = init_func
 
         if default is not NoDefault:
-            self.default = func(default)
-        else:
-            self.default = default
+            self.default = self.func(default)
+
+    def contribute_to_structure(self, structure, name):
+        setattr(structure, name, FieldDescriptor(name, self))
 
 
 class _SimpleType(Type):
@@ -257,15 +268,21 @@ class String(Type):
 
 class _StandartContainer(Type):
     func = lambda x: x
+    _default = NoDefault
 
     def __init__(self, default=NoDefault):
-        super(_StandartContainer, self).__init__(self.func, default, self.init)
+        super().__init__(self.func, default)
 
-    def init(self):
-        if self.default is not NoDefault:
-            return self.func(self.default)
+    @property
+    def default(self):
+        if self._default is not NoDefault:
+            return self.func(self._default)
         else:
-            return NoDefault
+          return NoDefault
+
+    @default.setter
+    def default(self, value):
+        self._default = value
 
 
 class List(_StandartContainer):
@@ -304,7 +321,6 @@ class Tuple(_StandartContainer):
           >>> assert type(s.t) is tuple
     '''
     func = tuple
-    init = NoInitFunc
 
 
 class Set(_StandartContainer):
@@ -339,7 +355,6 @@ class FrozenSet(_StandartContainer):
           >>> assert type(s.fs) is frozenset
     '''
     func = frozenset
-    init = NoInitFunc
 
 
 class Dict(_StandartContainer):

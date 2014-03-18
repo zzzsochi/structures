@@ -7,7 +7,7 @@ It's need for serialize structures.
 import decimal
 
 from .structure import Structure
-from .structure import StructureDescriptor
+from .descriptors import StructureDescriptor
 
 
 __all__ = ['from_dict', 'to_dict']

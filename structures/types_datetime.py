@@ -1,11 +1,12 @@
 '''In this is module defined types for working with **datetime**.'''
 
-__all__ = ['DateTime', 'Date', 'Time']
-
 import re
 import datetime
 
 from .types import Type, NoDefault
+
+__all__ = ['DateTime', 'Date', 'Time']
+
 
 RE_datetime_ISO = re.compile(
     r'^(\d\d\d\d)-(\d\d)-(\d\d)[\sTt](\d\d):(\d\d)(?::(\d\d))?(?:\.(\d+))?$')

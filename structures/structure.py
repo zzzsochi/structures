@@ -1,105 +1,31 @@
-__all__ = ['Descriptor', 'AttributeNotSet', 'Structure']
+from .descriptors import FieldDescriptor, StructureDescriptor
+from .markers import AttributeNotSet, NoDefault, NoInitFunc
+from .types import Type
 
-from .types import Type, NoDefault, NoInitFunc
-
-AttributeNotSet = type('AttributeNotSet', (), {})
-
-
-class Descriptor(object):
-    def __init__(self, name,
-                       func=lambda x: x,
-                       default=NoDefault,
-                       init_func=NoInitFunc):
-
-        self.name = name
-        self.func = func
-        self.default = default
-        self.init_func = init_func
-
-    def __get__(self, instance, owner):
-        if instance is not None:
-            ret = instance.__data__.get(self.name, self.default)
-
-            if ret is not AttributeNotSet and ret is not NoDefault:
-                return ret
-            else:
-                raise AttributeError(self.name)
-
-        else:
-            return self
-
-    def __set__(self, instance, value):
-        if isinstance(instance, Structure):
-            if value is not AttributeNotSet:
-                instance.__data__[self.name] = self.func(value)
-            else:
-                instance.__data__[self.name] = AttributeNotSet
-
-    def __delete__(self, instance):
-        if isinstance(instance, Structure):
-            instance.__data__[self.name] = AttributeNotSet
-
-
-class StructureDescriptor(Descriptor):
-    def __init__(self, name, structure_class):
-        self.structure_class = structure_class
-        super(StructureDescriptor, self).__init__(name)
-
-    def __set__(self, instance, value):
-        if isinstance(instance, Structure):
-            if isinstance(value, self.structure_class):
-                instance.__data__[self.name] = value
-
-            elif value is AttributeNotSet:
-                instance.__data__[self.name] = AttributeNotSet
-
-            else:
-                raise TypeError('Value must be a type %r, but %r.' %
-                                            (self.structure_class, type(value)))
-
-    def __call__(self):
-        return self.structure_class()
+__all__ = ['Structure']
 
 
 class StructureMetaClass(type):
-    '''Metaclass for structure.'''
+    '''Metaclass for structure'''
     def __init__(cls, name, base, cls_dict):
-        for attr, value in cls_dict.items():
-            if (isinstance(value, Type) or
-                (isinstance(value, type) and issubclass(value, Type))):
+        for attr, field in cls_dict.items():
+            if isinstance(field, type) and issubclass(field, Type):
+                field = field()
 
-                setattr(cls, attr, Descriptor(attr, value.func,
-                                                    value.default,
-                                                    value.init_func))
-
-            elif isinstance(value, StructureMetaClass):
-                setattr(cls, attr, StructureDescriptor(attr, value))
+            if hasattr(field, 'contribute_to_structure'):
+                field.contribute_to_structure(cls, attr)
 
             else:
-                setattr(cls, attr, value)
+                setattr(cls, attr, field)
+
+    def contribute_to_structure(cls, structure, name):
+        setattr(structure, name, StructureDescriptor(name, cls))
 
 
 class Structure(object, metaclass=StructureMetaClass):
-    '''Basic class for building structures of data.'''
+    '''Basic class for building structures of data'''
     def __init__(self):
         self.__data__ = {}
-        for attr in dir(self):
-            if hasattr(self.__class__, attr):
-                value = getattr(self.__class__, attr)
-
-                if isinstance(value, StructureDescriptor):
-                    setattr(self, attr, value.structure_class())
-
-                elif isinstance(value, Descriptor):
-                    desc = getattr(self.__class__, attr)
-
-                    if desc.init_func is not NoInitFunc:
-                        default = desc.init_func()
-                        if default is not NoDefault:
-                            setattr(self, attr, desc.init_func())
-
-                elif isinstance(value, StructureMetaClass):
-                    setattr(self, attr, value())
 
     def __iter__(self):
         for attr in dir(self):
