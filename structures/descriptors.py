@@ -1,4 +1,4 @@
-from .markers import AttributeNotSet, NoDefault, NoInitFunc
+from .markers import AttributeNotSet, NoDefault
 
 
 class BaseDescriptor(object):

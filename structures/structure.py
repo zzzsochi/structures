@@ -1,6 +1,6 @@
-from .descriptors import FieldDescriptor, StructureDescriptor
-from .markers import AttributeNotSet, NoDefault, NoInitFunc
-from .types import Type
+from .descriptors import StructureDescriptor
+from .markers import AttributeNotSet, NoDefault
+from .fields import Field
 
 __all__ = ['Structure']
 
@@ -9,7 +9,7 @@ class StructureMetaClass(type):
     '''Metaclass for structure'''
     def __init__(cls, name, base, cls_dict):
         for attr, field in cls_dict.items():
-            if isinstance(field, type) and issubclass(field, Type):
+            if isinstance(field, type) and issubclass(field, Field):
                 field = field()
 
             if hasattr(field, 'contribute_to_structure'):

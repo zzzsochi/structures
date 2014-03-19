@@ -1,6 +1,8 @@
-__version__ = '2.0.2'
+__version__ = '3.0'
+
+from . import structure, fields, fields_datetime, dictionary
 
 from .structure import *
-from .types import *
-from .types_datetime import *
+from .fields import *
+from .fields_datetime import *
 from .dictionary import from_dict, to_dict

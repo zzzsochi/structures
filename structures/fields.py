@@ -1,8 +1,8 @@
 from .descriptors import FieldDescriptor
-from .markers import NoDefault, NoInitFunc
+from .markers import NoDefault
 
 __all__ = [
-    'Type',
+    'Field',
     'Integer',
     'Float',
     'Decimal',
@@ -18,14 +18,14 @@ __all__ = [
 ]
 
 
-class Type(object):
+class Field(object):
     '''Basic class for attributes
 
        It may use for quick building simple type:
 
           >>> from structures import *
           >>> class S(Structure):
-          ...     t = Type(int, '12')
+          ...     t = Field(int, '12')
           ...
           >>> s = S()
           >>> s.t
@@ -38,7 +38,7 @@ class Type(object):
        More complex type for reusable:
 
           >>> from structures import *
-          >>> class T(Type):
+          >>> class T(Field):
           ...     func = int
           ...     def __init__(self, default=NoDefault):
           ...         super(T, self).__init__(self.func)
@@ -80,13 +80,13 @@ class Type(object):
         setattr(structure, name, FieldDescriptor(name, self))
 
 
-class _SimpleType(Type):
+class SimpleField(Field):
     '''
           >>> from structures import *
-          >>> class IntegerFromSimpleType(_SimpleType):
+          >>> class IntegerFromSimpleField(SimpleField):
           ...     func = int
           >>> class S(Structure):
-          ...     i = IntegerFromSimpleType(10)
+          ...     i = IntegerFromSimpleField(10)
           ...
           >>> s = S()
           >>> s.i
@@ -98,10 +98,10 @@ class _SimpleType(Type):
     func = lambda x: x
 
     def __init__(self, default=NoDefault):
-        super(_SimpleType, self).__init__(self.__class__.func, default)
+        super(SimpleField, self).__init__(self.__class__.func, default)
 
 
-class Integer(_SimpleType):
+class Integer(SimpleField):
     '''Integer type
 
           >>> from structures import *
@@ -118,7 +118,7 @@ class Integer(_SimpleType):
     func = int
 
 
-class Float(_SimpleType):
+class Float(SimpleField):
     '''Float type
 
           >>> from structures import *
@@ -135,7 +135,7 @@ class Float(_SimpleType):
     func = float
 
 
-class Decimal(_SimpleType):
+class Decimal(SimpleField):
     '''Decimal type, contain a decimal.Decimal
 
           >>> import decimal
@@ -154,7 +154,7 @@ class Decimal(_SimpleType):
     func = __decimal.Decimal
 
 
-class Boolean(_SimpleType):
+class Boolean(SimpleField):
     '''Boolean type
 
           >>> from structures import *
@@ -174,7 +174,7 @@ class Boolean(_SimpleType):
     func = bool
 
 
-class Bytes(_SimpleType):
+class Bytes(SimpleField):
     '''Bytes type, this is a type introducing the sequence of bytes: str
 
           >>> from structures import *
@@ -199,7 +199,7 @@ class Bytes(_SimpleType):
     func = bytes
 
 
-class Binary(_SimpleType):
+class Binary(SimpleField):
     '''Binary type is deprecated! Use Bytes!
 
           >>> from structures import *
@@ -228,7 +228,7 @@ class Binary(_SimpleType):
         return bytes(*args, **kwargs)
 
 
-class String(Type):
+class String(Field):
     '''String type, this is a type introducing the symbolic string: unicode
 
         String(default, enc=UTF-8)
@@ -266,7 +266,7 @@ class String(Type):
                 return str(obj)
 
 
-class _StandartContainer(Type):
+class StandartContainer(Field):
     func = lambda x: x
     _default = NoDefault
 
@@ -285,7 +285,7 @@ class _StandartContainer(Type):
         self._default = value
 
 
-class List(_StandartContainer):
+class List(StandartContainer):
     '''List type
 
           >>> from structures import *
@@ -304,7 +304,7 @@ class List(_StandartContainer):
     func = list
 
 
-class Tuple(_StandartContainer):
+class Tuple(StandartContainer):
     '''Tuple type
 
           >>> from structures import *
@@ -323,7 +323,7 @@ class Tuple(_StandartContainer):
     func = tuple
 
 
-class Set(_StandartContainer):
+class Set(StandartContainer):
     '''Set type
 
           >>> from structures import *
@@ -340,7 +340,7 @@ class Set(_StandartContainer):
     func = set
 
 
-class FrozenSet(_StandartContainer):
+class FrozenSet(StandartContainer):
     '''FrozenSet type
 
           >>> from structures import *
@@ -357,7 +357,7 @@ class FrozenSet(_StandartContainer):
     func = frozenset
 
 
-class Dict(_StandartContainer):
+class Dict(StandartContainer):
     '''Dict type
 
           >>> from structures import *

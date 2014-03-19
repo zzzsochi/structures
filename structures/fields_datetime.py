@@ -3,7 +3,8 @@
 import re
 import datetime
 
-from .types import Type, NoDefault
+from .fields import Field
+from .markers import NoDefault
 
 __all__ = ['DateTime', 'Date', 'Time']
 
@@ -37,7 +38,7 @@ def parse_ISO(string):
     raise ValueError('The bad ISO datetime string: %r' % string)
 
 
-class _DateTimeType(Type):
+class BaseDateTimeField(Field):
     func = lambda x: x
     format = None
 
@@ -47,10 +48,10 @@ class _DateTimeType(Type):
             func = lambda dt, format=format: self.__class__.func(dt, format)
         else:
             func = self.__class__.func
-        super(_DateTimeType, self).__init__(func, default)
+        super(BaseDateTimeField, self).__init__(func, default)
 
 
-class DateTime(_DateTimeType):
+class DateTime(BaseDateTimeField):
     @staticmethod
     def func(dt, format=None):
         if type(dt) is datetime.datetime:
@@ -73,7 +74,7 @@ class DateTime(_DateTimeType):
                             ' date or string, but %r' % type(dt))
 
 
-class Date(_DateTimeType):
+class Date(BaseDateTimeField):
     @staticmethod
     def func(date, format=None):
         if type(date) is datetime.date:
@@ -96,7 +97,7 @@ class Date(_DateTimeType):
                             ' datetime or string, but %r' % type(date))
 
 
-class Time(_DateTimeType):
+class Time(BaseDateTimeField):
     @staticmethod
     def func(time, format=None):
         if type(time) is datetime.time:
