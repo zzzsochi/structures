@@ -3,12 +3,13 @@ from .markers import NoDefault
 
 __all__ = [
     'Field',
+    'SimpleField',
+    'StandartContainerField',
     'Integer',
     'Float',
     'Decimal',
     'Boolean',
     'Bytes',
-    'Binary',
     'String',
     'List',
     'Tuple',
@@ -199,35 +200,6 @@ class Bytes(SimpleField):
     func = bytes
 
 
-class Binary(SimpleField):
-    '''Binary type is deprecated! Use Bytes!
-
-          >>> from structures import *
-          >>> class S(Structure):
-          ...     b = Binary(b'binary string')
-          ...
-          >>> s = S()
-          >>> s.b
-          b'binary string'
-          >>>
-          >>> try:
-          ...     s.b = 'unicode string'
-          ...     raise AssertionError('Must raise TypeError exception.')
-          ...
-          ... except TypeError:
-          ...     pass
-          ...
-          >>> assert type(s.b) is bytes
-          >>> s.b
-          b'binary string'
-    '''
-    @staticmethod
-    def func(*args, **kwargs):
-        import warnings
-        warnings.warn('Binary type is deprecated! Use Bytes!', DeprecationWarning)
-        return bytes(*args, **kwargs)
-
-
 class String(Field):
     '''String type, this is a type introducing the symbolic string: unicode
 
@@ -266,7 +238,7 @@ class String(Field):
                 return str(obj)
 
 
-class StandartContainer(Field):
+class StandartContainerField(Field):
     func = lambda x: x
     _default = NoDefault
 
@@ -285,7 +257,7 @@ class StandartContainer(Field):
         self._default = value
 
 
-class List(StandartContainer):
+class List(StandartContainerField):
     '''List type
 
           >>> from structures import *
@@ -304,7 +276,7 @@ class List(StandartContainer):
     func = list
 
 
-class Tuple(StandartContainer):
+class Tuple(StandartContainerField):
     '''Tuple type
 
           >>> from structures import *
@@ -323,7 +295,7 @@ class Tuple(StandartContainer):
     func = tuple
 
 
-class Set(StandartContainer):
+class Set(StandartContainerField):
     '''Set type
 
           >>> from structures import *
@@ -340,7 +312,7 @@ class Set(StandartContainer):
     func = set
 
 
-class FrozenSet(StandartContainer):
+class FrozenSet(StandartContainerField):
     '''FrozenSet type
 
           >>> from structures import *
@@ -357,7 +329,7 @@ class FrozenSet(StandartContainer):
     func = frozenset
 
 
-class Dict(StandartContainer):
+class Dict(StandartContainerField):
     '''Dict type
 
           >>> from structures import *
