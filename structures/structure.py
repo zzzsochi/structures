@@ -18,8 +18,8 @@ class StructureMetaClass(type):
             else:
                 setattr(cls, attr, field)
 
-    def contribute_to_structure(cls, structure, name):
-        setattr(structure, name, StructureDescriptor(name, cls))
+    def contribute_to_structure(substructure, structure, name):
+        setattr(structure, name, StructureDescriptor(name, substructure))
 
 
 class Structure(object, metaclass=StructureMetaClass):

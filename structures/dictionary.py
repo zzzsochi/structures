@@ -54,8 +54,8 @@ def _prepare_to_dict(obj):
         return frozenset(_prepare_to_dict(o) for o in obj)
 
     elif isinstance(obj, dict):
-        return dict(((_prepare_to_dict(k), _prepare_to_dict(v))
-                     for k, v in obj.items()))
+        return {_prepare_to_dict(k): _prepare_to_dict(v)
+                     for k, v in obj.items()}
 
     else:
         return obj
