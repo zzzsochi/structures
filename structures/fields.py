@@ -78,6 +78,7 @@ class Field(object):
             self.default = self.func(default)
 
     def contribute_to_structure(self, structure, name):
+        structure.__fields__[name] = self
         setattr(structure, name, FieldDescriptor(name, self))
 
 
