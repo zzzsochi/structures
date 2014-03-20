@@ -20,6 +20,9 @@ class BaseDescriptor(object):
 
     def __set__(self, instance, value):
         if not isinstance(instance, type):
+            if value != instance.__data__.get(self.name):
+                instance.__fields_changed__.append(self.name)
+
             if value is not AttributeNotSet:
                 instance.__data__[self.name] = value
             else:
