@@ -61,7 +61,7 @@ class Field(object):
 
     '''
 
-    func = lambda x: x
+    func = lambda self, x: x
     # The function is called when value is assigned for the attribute.
     # It must be accept one argument and return processed (e.g. casted) analog.
     # Also it is called for the default value in the creating (not instance!)
@@ -78,6 +78,8 @@ class Field(object):
             self.default = self.func(default)
 
     def contribute_to_structure(self, structure, name):
+        self.name = name
+        self.structure = structure
         structure.__fields__[name] = self
         setattr(structure, name, FieldDescriptor(name, self))
 
