@@ -30,7 +30,7 @@ class StructuresTests(TestCase):
 
         td.integer = 26
         self.assertTrue(td.__fields_changed__)
-        self.assertEqual(td.__fields_changed__, ['integer'])
+        self.assertEqual(td.__fields_changed__, {'integer'})
 
 
 class DeeperTests(TestCase):

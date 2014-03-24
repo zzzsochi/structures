@@ -34,7 +34,7 @@ class Structure(object, metaclass=StructureMetaClass):
     '''Basic class for building structures of data'''
     def __init__(self):
         self.__data__ = {}
-        self.__fields_changed__ = []
+        self.__fields_changed__ = set()
 
     def __iter__(self):
         for attr in dir(self):
