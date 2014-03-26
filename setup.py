@@ -17,7 +17,7 @@ setup(
     author='Zelenyak Aleksander aka ZZZ',
     author_email='zzz.sochi@gmail.com',
     url='https://github.com/zzzsochi/structures',
-    license='GPL',
+    license='BSD',
     platforms='any',
 
     classifiers=[
