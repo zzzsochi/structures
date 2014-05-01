@@ -44,11 +44,13 @@ class BaseDateTimeField(Field):
 
     def __init__(self, default=NoDefault, format=None):
         self.format = format
+
         if format is not None:
             func = lambda dt, format=format: self.__class__.func(dt, format)
         else:
             func = self.__class__.func
-        super(BaseDateTimeField, self).__init__(func, default)
+
+        super().__init__(func, default)
 
 
 class DateTime(BaseDateTimeField):

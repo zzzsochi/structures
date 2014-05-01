@@ -21,9 +21,9 @@ project = u'structures'
 copyright = u'2012, Alexander Zelenyak'
 
 # The short X.Y version.
-version = '2.0'
+version = '3.0'
 # The full version, including alpha/beta/rc tags.
-release = '2.0'
+release = '3.0'
 
 exclude_trees = ['_build']
 
